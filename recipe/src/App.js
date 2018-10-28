@@ -3,12 +3,24 @@ import './App.css';
 
 import Form from './components/Form'
 
-class App extends Component {
+const API_KEY = "830adea4b658a39638354aca45a79f23"
 
-  getRecipe = (event) => {
+class App extends Component {
+  state = {
+    recipes: []
+  }
+
+  getRecipe = async (event) => {
+    const recipeName = event.target.elements.recipeName.value;
     // Prevent default refreshing behavior from the webpage
     event.preventDefault();
-    console.log("Working!")
+    const api_call = await fetch(`https://www.food2fork.com/api/search?key=${API_KEY}&q=shredded%20chicken&count=10`);
+    
+    const data = await api_call.json();
+    this.setState({
+      recipes: data
+    })
+    console.log(this.state.recipes);
   }
 
   render() {

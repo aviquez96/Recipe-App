@@ -1,15 +1,35 @@
 import React from "react";
 
 const Recipes = ({ recipes }) => (
-  <div>
-    {recipes.map(recipe => {
-      return (
-        <div key={recipe.recipe_id}>
-          <img src={recipe.image_url} alt={recipe.title} />
-          <p> {recipe.title} </p>
-        </div>
-      );
-    })}
+  <div className="container">
+    <div className="row">
+      {recipes.map(recipe => {
+        return (
+          <div
+            className="col-md-4"
+            key={recipe.title}
+            style={{ marginBottom: "2rem" }}
+          >
+            <div className="recipes__box">
+              <img src={recipe.image_url} alt={recipe.title} />
+              <div className="recipe__text">
+                <h5 className="recipes__title">
+                  {/*format title length so that it displays up to 25 characters in case its too long*/}
+                  {recipe.title.length < 20
+                    ? `${recipe.title}`
+                    : `${recipe.title.substring(0, 25)}...`}
+                </h5>
+                <p className="recipes__subtitle">
+                  Publisher:
+                  <span>{recipe.publisher}</span>
+                </p>
+              </div>
+              <button className="recipe_buttons">View Recipe</button>
+            </div>
+          </div>
+        );
+      })}
+    </div>
   </div>
 );
 

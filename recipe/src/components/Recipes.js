@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 const Recipes = ({ recipes }) => (
   <div className="container">
     <div className="row">
@@ -24,7 +26,17 @@ const Recipes = ({ recipes }) => (
                   <span>{recipe.publisher}</span>
                 </p>
               </div>
-              <button className="recipe_buttons">View Recipe</button>
+              <button className="recipe_buttons">
+                <Link
+                  to={{
+                    pathname: `/recipe/${recipe.recipe_id}`,
+                    //This is used to show the exact item when the button is pressed
+                    state: { recipe: recipe.title }
+                  }}
+                >
+                  View Recipe
+                </Link>
+              </button>
             </div>
           </div>
         );

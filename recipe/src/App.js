@@ -16,7 +16,7 @@ class App extends Component {
     // Prevent default refreshing behavior from the webpage
     event.preventDefault();
     const api_call = await fetch(
-      `https://www.food2fork.com/api/search?key=${API_KEY}&q=${recipeName}&count=10`
+      `https://www.food2fork.com/api/search?key=${API_KEY}&q=${recipeName}&count=9`
     );
 
     const data = await api_call.json();

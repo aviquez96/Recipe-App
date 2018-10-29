@@ -13,7 +13,11 @@ const Recipes = ({ recipes }) => (
             style={{ marginBottom: "2rem" }}
           >
             <div className="recipes__box">
-              <img src={recipe.image_url} alt={recipe.title} />
+              <img
+                className="recipes_box-img"
+                src={recipe.image_url}
+                alt={recipe.title}
+              />
               <div className="recipe__text">
                 <h5 className="recipes__title">
                   {/*format title length so that it displays up to 25 characters in case its too long*/}

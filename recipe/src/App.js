@@ -4,7 +4,8 @@ import "./App.css";
 import Form from "./components/Form";
 import Recipes from "./components/Recipes";
 
-const API_KEY = "830adea4b658a39638354aca45a79f23";
+// const API_KEY = "830adea4b658a39638354aca45a79f23";
+const API_KEY = "aedbb2d845263a9cad4857bcec585195";
 
 class App extends Component {
   state = {
@@ -23,7 +24,18 @@ class App extends Component {
     this.setState({
       recipes: data.recipes
     });
-    console.log(this.state.recipes);
+  };
+
+  componentDidMount = () => {
+    const json = localStorage.getItem("recipes");
+    const recipes = JSON.parse(json);
+    this.setState({ recipes: recipes });
+  };
+
+  // This will be executed once the component is updated, which is when the state changes
+  componentDidUpdate = () => {
+    const recipes = JSON.stringify(this.state.recipes);
+    localStorage.setItem("recipes", recipes);
   };
 
   render() {
